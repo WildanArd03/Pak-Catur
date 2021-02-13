@@ -1,8 +1,8 @@
+import htmr from 'htmr'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { materialsDir, practicesList } from '~root/lib/constants'
+import { practicesDir, practicesList } from '~root/lib/constants'
 import { cleanFileName, getMarkdownData } from '~root/lib/functions'
 import { MaterialData } from '~root/lib/types'
-import htmr from 'htmr'
 
 type MateriParams = {
   soal: string
@@ -44,12 +44,12 @@ export const getStaticPaths: GetStaticPaths<MateriParams> = async () => {
 export const getStaticProps: GetStaticProps<
   MateriProps,
   MateriParams
-> = async ({ params: { materi } }) => {
-  const data = getMarkdownData(materialsDir, materi)
+> = async ({ params: { soal } }) => {
+  const data = getMarkdownData(practicesDir, soal)
 
   return {
     props: {
-      judul: materi,
+      judul: soal,
       data: data,
     },
   }
