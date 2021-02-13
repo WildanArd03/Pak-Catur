@@ -11,3 +11,16 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'soal'
+    folder: 'soal'
+    label: 'Soal'
+    create: true
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - label: 'Soal'
+        name: 'soal'
+        widget: 'list'
+        fields:
+          - { label: 'Pertanyaan', widget: 'string', name: 'pertanyaan' }
+          - { label: 'Jawaban', widget: 'string', name: 'pertanyaan' }
+          - { label: 'Jawaban Benar', widget: 'string', name: 'pertanyaan' }
