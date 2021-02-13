@@ -24,9 +24,15 @@ collections:
         max: 10
         fields:
           - { label: 'Pertanyaan', widget: 'string', name: 'pertanyaan' }
-          - { label: 'Jawaban Benar', widget: 'string', name: 'jawabanBenar' }
           - label: 'Daftar Jawaban'
             widget: 'list'
             name: 'daftarJawaban'
             max: 5
-            field: { label: 'Jawaban', name: 'jawaban', widget: 'string' }
+            fields:
+              - { label: 'Jawaban', name: 'jawaban', widget: 'string' }
+              - {
+                  label: 'Jawaban Benar?',
+                  name: 'trueKah',
+                  widget: 'boolean',
+                  default: false,
+                }
