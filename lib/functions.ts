@@ -13,7 +13,7 @@ export function getMarkdownData(
 ): MaterialData {
   const md = new Remarkable()
 
-  const fileContent = fs.readFileSync(path.join(materialsDir, `${fileName}.md`))
+  const fileContent = fs.readFileSync(path.join(folderPath, `${fileName}.md`))
 
   const matterData = matter(fileContent)
   const parsed = md.render(matterData.content)
