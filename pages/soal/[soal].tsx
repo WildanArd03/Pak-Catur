@@ -4,16 +4,16 @@ import { practicesDir, practicesList } from '~root/lib/constants'
 import { cleanFileName, getMarkdownData } from '~root/lib/functions'
 import { MaterialData } from '~root/lib/types'
 
-type MateriParams = {
+type SoalParams = {
   soal: string
 }
 
-type MateriProps = {
+type SoalProps = {
   judul: string
   data: MaterialData
 }
 
-const MateriIndex: NextPage<MateriProps> = ({
+const MateriIndex: NextPage<SoalProps> = ({
   judul,
   data: {
     content,
@@ -30,7 +30,7 @@ const MateriIndex: NextPage<MateriProps> = ({
 
 export default MateriIndex
 
-export const getStaticPaths: GetStaticPaths<MateriParams> = async () => {
+export const getStaticPaths: GetStaticPaths<SoalParams> = async () => {
   return {
     paths: practicesList.map(practice => ({
       params: {
@@ -41,10 +41,9 @@ export const getStaticPaths: GetStaticPaths<MateriParams> = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<
-  MateriProps,
-  MateriParams
-> = async ({ params: { soal } }) => {
+export const getStaticProps: GetStaticProps<SoalProps, SoalParams> = async ({
+  params: { soal },
+}) => {
   const data = getMarkdownData(practicesDir, soal)
 
   return {
