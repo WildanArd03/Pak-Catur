@@ -3,6 +3,7 @@ backend:
   branch: main
 media_folder: public/img
 public_folder: img
+site_url: 'pak-catur.netlify.app'
 collections:
   - label: 'Materi'
     name: 'materi'
@@ -22,5 +23,5 @@ collections:
         widget: 'list'
         fields:
           - { label: 'Pertanyaan', widget: 'string', name: 'pertanyaan' }
-          - { label: 'Jawaban', widget: 'string', name: 'pertanyaan' }
-          - { label: 'Jawaban Benar', widget: 'string', name: 'pertanyaan' }
+          - { label: 'Jawaban', widget: 'string', name: 'jawaban' }
+          - { label: 'Jawaban Benar', widget: 'string', name: 'jawabanBenar' }
