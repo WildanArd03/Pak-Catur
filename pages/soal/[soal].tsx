@@ -1,11 +1,11 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
-import { materialsDir, materialsList } from '~root/lib/constants'
+import { materialsDir, practicesList } from '~root/lib/constants'
 import { cleanFileName, getMarkdownData } from '~root/lib/functions'
 import { MaterialData } from '~root/lib/types'
 import htmr from 'htmr'
 
 type MateriParams = {
-  materi: string
+  soal: string
 }
 
 type MateriProps = {
@@ -32,9 +32,9 @@ export default MateriIndex
 
 export const getStaticPaths: GetStaticPaths<MateriParams> = async () => {
   return {
-    paths: materialsList.map(material => ({
+    paths: practicesList.map(practice => ({
       params: {
-        materi: cleanFileName(material),
+        soal: cleanFileName(practice),
       },
     })),
     fallback: false,

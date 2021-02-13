@@ -1,20 +1,20 @@
 import { Container } from '@chakra-ui/react'
 import { GetStaticProps, NextPage } from 'next'
 import Link from 'next/link'
-import { materialsList } from '~root/lib/constants'
+import { practicesList } from '~root/lib/constants'
 import { cleanFileName } from '~root/lib/functions'
 
 type HomeProps = {
-  materials: string[]
+  practices: string[]
 }
 
-const MateriIndex: NextPage<HomeProps> = ({ materials }) => {
+const SoalIndex: NextPage<HomeProps> = ({ practices }) => {
   return (
     <Container maxWidth='80%'>
       <ol>
-        {materials.map(material => (
-          <li key={material}>
-            <Link href={`/materi/${material}`}>{material}</Link>
+        {practices.map(practice => (
+          <li key={practice}>
+            <Link href={`/soal/${practice}`}>{practice}</Link>
           </li>
         ))}
       </ol>
@@ -22,12 +22,12 @@ const MateriIndex: NextPage<HomeProps> = ({ materials }) => {
   )
 }
 
-export default MateriIndex
+export default SoalIndex
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   return {
     props: {
-      materials: materialsList.map(material => cleanFileName(material)),
+      practices: practicesList.map(material => cleanFileName(material)),
     },
   }
 }

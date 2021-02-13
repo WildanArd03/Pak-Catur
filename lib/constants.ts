@@ -20,9 +20,10 @@ export const materialsExample = [
 ]
 
 export const materialsDir = path.join(process.cwd(), 'materi')
-export const practicesDir = path.join(materialsDir, 'soal')
+export const practicesDir = path.join(process.cwd(), 'soal')
 
 export const materialsList = fs.readdirSync(materialsDir)
+export const practicesList = fs.readdirSync(practicesDir)
 
 export const mmm = [
   {
