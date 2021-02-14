@@ -2,7 +2,6 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
 import { Remarkable } from 'remarkable'
-import { materialsDir } from './constants'
 import { MarkdownData } from './types'
 
 export const cleanFileName = (fileName: string) => fileName.replace(/\.md$/, '')

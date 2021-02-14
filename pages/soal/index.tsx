@@ -1,6 +1,6 @@
-import { Container } from '@chakra-ui/react'
 import { GetStaticProps, NextPage } from 'next'
-import Link from 'next/link'
+import MenuButton from '~root/components/MenuButton'
+import MenuWrapper from '~root/components/MenuWrapper'
 import { practicesList } from '~root/lib/constants'
 import { cleanFileName } from '~root/lib/functions'
 
@@ -10,15 +10,13 @@ type HomeProps = {
 
 const SoalIndex: NextPage<HomeProps> = ({ practices }) => {
   return (
-    <Container maxWidth='80%'>
-      <ol>
-        {practices.map(practice => (
-          <li key={practice}>
-            <Link href={`/soal/${practice}`}>{practice}</Link>
-          </li>
-        ))}
-      </ol>
-    </Container>
+    <MenuWrapper>
+      {practices.map(practice => (
+        <MenuButton key={practice} href={`/soal/${practice}`}>
+          {practice}
+        </MenuButton>
+      ))}
+    </MenuWrapper>
   )
 }
 
