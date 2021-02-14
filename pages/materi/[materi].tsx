@@ -15,7 +15,7 @@ type MateriProps = {
   data: MarkdownData
 }
 
-const MateriIndex: NextPage<MateriProps> = ({
+const MateriSingle: NextPage<MateriProps> = ({
   judul,
   data: {
     content,
@@ -29,7 +29,7 @@ const MateriIndex: NextPage<MateriProps> = ({
   )
 }
 
-export default MateriIndex
+export default MateriSingle
 
 export const getStaticPaths: GetStaticPaths<MateriParams> = async () => {
   return {

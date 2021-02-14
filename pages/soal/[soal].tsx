@@ -1,4 +1,14 @@
+import {
+  Box,
+  Button,
+  Container,
+  Radio,
+  RadioGroup,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { FormEvent, useState } from 'react'
 import { practicesDir, practicesList } from '~root/lib/constants'
 import { cleanFileName, getMarkdownData } from '~root/lib/functions'
 import { MarkdownData, Soal } from '~root/lib/types'
@@ -12,39 +22,71 @@ type SoalProps = {
   data: MarkdownData
 }
 
-const SoalIndex: NextPage<SoalProps> = ({
+const SoalSingle: NextPage<SoalProps> = ({
   judul,
   data: {
     metadata: { title, soal: daftarSoal },
   },
 }) => {
-  return (
-    <div>
-      <p>Hai aku {title}</p>
+  const [lembarJawaban, setLembarJawaban] = useState<boolean[]>([])
 
-      <form>
-        {(daftarSoal as Soal[]).map(soal => {
+  function setLembarJawabanNomor(
+    nomor: number,
+    value: boolean,
+    lembarJawaban: boolean[]
+  ) {
+    const cloneLembarJawaban = [...lembarJawaban]
+    cloneLembarJawaban[nomor] = value
+    return cloneLembarJawaban
+  }
+
+  function tunjukinNilai(e: FormEvent<HTMLDivElement>) {
+    e.preventDefault()
+    alert(
+      `Cuma bener ${lembarJawaban.reduce(
+        (acc, cur) => (cur ? acc + 1 : acc),
+        0
+      )}`
+    )
+  }
+
+  return (
+    <Container maxWidth={['90%', '80%', '60%']} paddingY={8}>
+      <VStack as='form' onSubmit={tunjukinNilai} spacing={8} alignItems='start'>
+        {(daftarSoal as Soal[]).map(({ daftarJawaban, pertanyaan }, index) => {
           return (
-            <div key={soal.pertanyaan}>
-              <span>{soal.pertanyaan}</span>
-              {soal.daftarJawaban.map(({ jawaban, trueKah }) => (
-                <div>
-                  <label>
-                    <input type='radio' value={trueKah ? 'true' : ''} />
-                    {jawaban}
-                  </label>
-                </div>
-              ))}
-            </div>
+            <Box key={pertanyaan}>
+              <Text fontSize='lg' marginBottom={4}>
+                {pertanyaan}
+              </Text>
+              <RadioGroup
+                onChange={v =>
+                  setLembarJawaban(lembarJawaban =>
+                    setLembarJawabanNomor(index, v === 'true', lembarJawaban)
+                  )
+                }
+              >
+                <VStack spacing={2} alignItems='start'>
+                  {daftarJawaban.map(({ jawaban, trueKah }) => (
+                    <Radio key={jawaban} value={`${trueKah}`}>
+                      {jawaban}
+                    </Radio>
+                  ))}
+                </VStack>
+              </RadioGroup>
+            </Box>
           )
         })}
-        <button>Sumbit</button>
-      </form>
-    </div>
+
+        <Button type='submit' colorScheme='green'>
+          Selesai
+        </Button>
+      </VStack>
+    </Container>
   )
 }
 
-export default SoalIndex
+export default SoalSingle
 
 export const getStaticPaths: GetStaticPaths<SoalParams> = async () => {
   return {
