@@ -1,6 +1,6 @@
-import { Container } from '@chakra-ui/react'
 import { GetStaticProps, NextPage } from 'next'
-import Link from 'next/link'
+import MenuButton from '~root/components/MenuButton'
+import MenuWrapper from '~root/components/MenuWrapper'
 import { materialsList } from '~root/lib/constants'
 import { cleanFileName } from '~root/lib/functions'
 
@@ -10,15 +10,13 @@ type HomeProps = {
 
 const MateriIndex: NextPage<HomeProps> = ({ materials }) => {
   return (
-    <Container maxWidth='80%'>
-      <ol>
-        {materials.map(material => (
-          <li key={material}>
-            <Link href={`/materi/${material}`}>{material}</Link>
-          </li>
-        ))}
-      </ol>
-    </Container>
+    <MenuWrapper>
+      {materials.map(material => (
+        <MenuButton key={material} href={`/materi/${material}`}>
+          {material}
+        </MenuButton>
+      ))}
+    </MenuWrapper>
   )
 }
 

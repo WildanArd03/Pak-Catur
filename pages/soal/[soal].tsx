@@ -1,8 +1,7 @@
-import htmr from 'htmr'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { practicesDir, practicesList } from '~root/lib/constants'
 import { cleanFileName, getMarkdownData } from '~root/lib/functions'
-import { MaterialData } from '~root/lib/types'
+import { MarkdownData, Soal } from '~root/lib/types'
 
 type SoalParams = {
   soal: string
@@ -10,25 +9,42 @@ type SoalParams = {
 
 type SoalProps = {
   judul: string
-  data: MaterialData
+  data: MarkdownData
 }
 
-const MateriIndex: NextPage<SoalProps> = ({
+const SoalIndex: NextPage<SoalProps> = ({
   judul,
   data: {
-    content,
-    metadata: { title },
+    metadata: { title, soal: daftarSoal },
   },
 }) => {
   return (
     <div>
       <p>Hai aku {title}</p>
-      {htmr(content)}
+
+      <form>
+        {(daftarSoal as Soal[]).map(soal => {
+          return (
+            <div key={soal.pertanyaan}>
+              <span>{soal.pertanyaan}</span>
+              {soal.daftarJawaban.map(({ jawaban, trueKah }) => (
+                <div>
+                  <label>
+                    <input type='radio' value={trueKah ? 'true' : ''} />
+                    {jawaban}
+                  </label>
+                </div>
+              ))}
+            </div>
+          )
+        })}
+        <button>Sumbit</button>
+      </form>
     </div>
   )
 }
 
-export default MateriIndex
+export default SoalIndex
 
 export const getStaticPaths: GetStaticPaths<SoalParams> = async () => {
   return {

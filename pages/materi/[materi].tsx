@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { materialsDir, materialsList } from '~root/lib/constants'
 import { cleanFileName, getMarkdownData } from '~root/lib/functions'
-import { MaterialData } from '~root/lib/types'
+import { MarkdownData } from '~root/lib/types'
 import htmr from 'htmr'
 
 type MateriParams = {
@@ -10,7 +10,7 @@ type MateriParams = {
 
 type MateriProps = {
   judul: string
-  data: MaterialData
+  data: MarkdownData
 }
 
 const MateriIndex: NextPage<MateriProps> = ({

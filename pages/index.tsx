@@ -1,19 +1,13 @@
-import { Container } from '@chakra-ui/react'
 import { NextPage } from 'next'
-import Link from 'next/link'
+import MenuButton from '~root/components/MenuButton'
+import MenuWrapper from '~root/components/MenuWrapper'
 
 const Home: NextPage = () => {
   return (
-    <Container maxWidth='80%'>
-      <ol>
-        <li>
-          <Link href='/materi'>material</Link>
-        </li>
-        <li>
-          <Link href='/soal'>soal</Link>
-        </li>
-      </ol>
-    </Container>
+    <MenuWrapper>
+      <MenuButton href='/materi'>Materi</MenuButton>
+      <MenuButton href='/soal'>Latihan Soal</MenuButton>
+    </MenuWrapper>
   )
 }
 
