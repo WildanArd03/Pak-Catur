@@ -11,8 +11,6 @@ function MyApp({ Component, pageProps }) {
         openGraph={{
           type: 'website',
           url: 'https://pak-catur.netlify.app/',
-          title: 'Aplikasi Matematika',
-          description: 'Kuliah? BSI aja! Hotel? Traveloka',
           images: [{ url: 'https://pak-catur.netlify.app/splash.jpg' }],
         }}
       />
