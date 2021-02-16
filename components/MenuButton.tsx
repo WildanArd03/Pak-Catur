@@ -8,8 +8,11 @@ export type MenuButtonProps = {
 
 const MenuButton: FC<MenuButtonProps> = ({ href, children }) => {
   return (
-    <LinkWrapper nextProps={{ href }} chakraProps={{ textDecoration: 'none' }}>
-      <Button colorScheme='blue' width='full' minHeight={24}>
+    <LinkWrapper
+      nextProps={{ href }}
+      chakraProps={{ textDecoration: 'none', width: '100%' }}
+    >
+      <Button colorScheme='blue' width='full' minHeight={24} whiteSpace='normal' >
         {children}
       </Button>
     </LinkWrapper>

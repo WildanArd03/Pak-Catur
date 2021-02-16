@@ -63,9 +63,11 @@ const SoalSingle: NextPage<SoalProps> = ({
 
       <Navigation backButton='/soal' />
 
-      <Heading textAlign='center' marginTop={8}>
-        {title}
-      </Heading>
+      <Container maxWidth={['90%', '80%', '60%']} paddingY={8}>
+        <Heading textAlign='center' marginTop={8}>
+          {title}
+        </Heading>
+      </Container>
 
       <Container maxWidth={['90%', '80%', '60%']} paddingY={8}>
         <VStack
