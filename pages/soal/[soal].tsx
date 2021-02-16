@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   Container,
+  Heading,
   Radio,
   RadioGroup,
   Text,
@@ -61,6 +62,8 @@ const SoalSingle: NextPage<SoalProps> = ({
       <NextSeo title={title} />
 
       <Navigation backButton='/soal' />
+
+      <Heading>{title}</Heading>
 
       <Container maxWidth={['90%', '80%', '60%']} paddingY={8}>
         <VStack

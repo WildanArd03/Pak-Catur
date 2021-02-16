@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react'
+import { Container, Heading } from '@chakra-ui/react'
 import htmr from 'htmr'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { NextSeo } from 'next-seo'
@@ -27,6 +27,8 @@ const MateriSingle: NextPage<MateriProps> = ({
       <NextSeo title={title} />
 
       <Navigation backButton='/materi' />
+
+      <Heading>{title}</Heading>
 
       <Container maxWidth={['90%', '80%', '60%']} paddingY={8}>
         {htmr(content, htmrOptions)}
