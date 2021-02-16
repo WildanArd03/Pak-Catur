@@ -8,26 +8,21 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { NextPage } from 'next'
+import { NextSeo } from 'next-seo'
 import MenuButton from '~root/components/MenuButton'
 import MenuWrapper from '~root/components/MenuWrapper'
+import Navigation from '~root/components/Navigation'
 
 const Home: NextPage = () => {
   return (
     <>
-      <Container
-        maxWidth={['100%']}
-        bgColor='blue.500'
-        paddingY={3}
-        paddingX={8}
-      >
-        <Text color='white' fontSize='3xl'>
-          Math Wikrama
-        </Text>
-      </Container>
+      <NextSeo title='Home Page' />
+
+      <Navigation />
 
       <Container maxWidth={['90%', , '80%']} paddingY={8}>
         <Flex direction={['column', , 'row']} alignItems='center'>
-          <Box maxWidth='50%'>
+          <Box maxWidth={['100%', , '50%']}>
             <Image src='/splash.jpg' />
           </Box>
 
