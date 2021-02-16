@@ -39,6 +39,7 @@ export const htmrOptions: HtmrOptions = {
     p: configuredComponentFactory<TextProps>(Text, {
       fontSize: 'lg',
       as: 'p',
+      marginBottom: 5
     }),
     img: Image,
   },
