@@ -1,4 +1,4 @@
-import { Box, Center, Link, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Link, Text } from '@chakra-ui/react'
 import { FC } from 'react'
 import LinkWrapper from './LinkWrapper'
 
@@ -8,10 +8,10 @@ export type MenuButtonProps = {
 
 const MenuButton: FC<MenuButtonProps> = ({ href, children }) => {
   return (
-    <LinkWrapper nextProps={{ href }}>
-      <Center height='100px' width='full' bgColor='cyan.400' rounded={4}>
-        <Text fontSize='lg'>{children}</Text>
-      </Center>
+    <LinkWrapper nextProps={{ href }} chakraProps={{ textDecoration: 'none' }}>
+      <Button colorScheme='blue' width='full' minHeight={24}>
+        {children}
+      </Button>
     </LinkWrapper>
   )
 }

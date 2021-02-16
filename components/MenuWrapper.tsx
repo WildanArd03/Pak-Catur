@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 const MenuWrapper: FC = ({ children }) => {
   return (
-    <Center minHeight='100vh'>
+    <Center paddingY={8}>
       <Container maxWidth={['90%', '80%', '60%']}>
         <SimpleGrid columns={[1, , 2]} spacing={4}>
           {children}

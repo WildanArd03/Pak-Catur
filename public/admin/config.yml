@@ -24,15 +24,17 @@ collections:
         max: 10
         fields:
           - { label: 'Pertanyaan', widget: 'string', name: 'pertanyaan' }
+          - label: 'Foto Tambahan'
+            widget: 'image'
+            name: 'fotoTambahan'
+            required: false
           - label: 'Daftar Jawaban'
             widget: 'list'
             name: 'daftarJawaban'
             max: 5
             fields:
               - { label: 'Jawaban', name: 'jawaban', widget: 'string' }
-              - {
-                  label: 'Jawaban Benar?',
-                  name: 'trueKah',
-                  widget: 'boolean',
-                  default: false,
-                }
+              - label: 'Jawaban Benar?'
+                name: 'trueKah'
+                widget: 'boolean'
+                default: false
