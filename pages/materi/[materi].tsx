@@ -28,7 +28,7 @@ const MateriSingle: NextPage<MateriProps> = ({
 
       <Navigation backButton='/materi' />
 
-      <Heading>{title}</Heading>
+      <Heading textAlign='center'>{title}</Heading>
 
       <Container maxWidth={['90%', '80%', '60%']} paddingY={8}>
         {htmr(content, htmrOptions)}
