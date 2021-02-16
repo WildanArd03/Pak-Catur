@@ -1,3 +1,3 @@
 # Project Pak Catur
 
-NextJS + Netlify + Netlify CMS
+Buka lah itu [/admin](https://pak-catur.netlify.app/admin)
