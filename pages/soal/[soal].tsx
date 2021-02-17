@@ -9,6 +9,7 @@ import {
   Button,
   Container,
   Heading,
+  Image,
   Radio,
   RadioGroup,
   Text,
@@ -77,12 +78,15 @@ const SoalSingle: NextPage<SoalProps> = ({
           alignItems='start'
         >
           {(daftarSoal as Soal[]).map(
-            ({ daftarJawaban, pertanyaan }, index) => {
+            ({ daftarJawaban, pertanyaan, fotoTambahan }, index) => {
               return (
                 <Box key={pertanyaan}>
                   <Text fontSize='lg' marginBottom={4}>
                     {pertanyaan}
                   </Text>
+
+                  {fotoTambahan && <Image src={fotoTambahan} />}
+
                   <RadioGroup
                     onChange={v =>
                       setLembarJawaban(lembarJawaban =>
@@ -113,24 +117,26 @@ const SoalSingle: NextPage<SoalProps> = ({
         </VStack>
       </Container>
 
-      <AlertDialog
-        leastDestructiveRef={wtfIsThis}
-        isOpen={isOpen}
-        onClose={() => router.replace('/soal')}
-        isCentered
-      >
-        <AlertDialogOverlay />
+      <Container maxWidth='90%'>
+        <AlertDialog
+          leastDestructiveRef={wtfIsThis}
+          isOpen={isOpen}
+          onClose={() => router.replace('/soal')}
+          isCentered
+        >
+          <AlertDialogOverlay />
 
-        <AlertDialogContent>
-          <AlertDialogHeader>Hasil Latihan Soal</AlertDialogHeader>
-          <AlertDialogBody>
-            Selamat, nilai kamu{' '}
-            {lembarJawaban.reduce((acc, cur) => (cur ? acc + 1 : acc), 0)}
-          </AlertDialogBody>
+          <AlertDialogContent>
+            <AlertDialogHeader>Hasil Latihan Soal</AlertDialogHeader>
+            <AlertDialogBody>
+              Selamat, nilai kamu{' '}
+              {lembarJawaban.reduce((acc, cur) => (cur ? acc + 1 : acc), 0)}
+            </AlertDialogBody>
 
-          <AlertDialogFooter />
-        </AlertDialogContent>
-      </AlertDialog>
+            <AlertDialogFooter />
+          </AlertDialogContent>
+        </AlertDialog>
+      </Container>
     </>
   )
 }

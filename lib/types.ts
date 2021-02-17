@@ -13,6 +13,7 @@ export type IndexingData = {
 
 export type Soal = {
   pertanyaan: string
+  fotoTambahan?: string
   daftarJawaban: Jawaban[]
 }
 
