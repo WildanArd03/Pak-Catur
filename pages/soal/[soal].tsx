@@ -86,7 +86,7 @@ const SoalSingle: NextPage<SoalProps> = ({
                     {pertanyaan}
                   </Text>
 
-                  {fotoTambahan && <Image src={`/${fotoTambahan}`} />}
+                  {fotoTambahan && <Image src={`/${fotoTambahan}`} marginBottom={4} />}
 
                   <RadioGroup
                     onChange={v =>
