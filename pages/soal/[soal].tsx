@@ -79,13 +79,14 @@ const SoalSingle: NextPage<SoalProps> = ({
         >
           {(daftarSoal as Soal[]).map(
             ({ daftarJawaban, pertanyaan, fotoTambahan }, index) => {
+              console.log(fotoTambahan)
               return (
                 <Box key={pertanyaan}>
                   <Text fontSize='lg' marginBottom={4}>
                     {pertanyaan}
                   </Text>
 
-                  {fotoTambahan && <Image src={fotoTambahan} />}
+                  {fotoTambahan && <Image src={`/${fotoTambahan}`} />}
 
                   <RadioGroup
                     onChange={v =>
