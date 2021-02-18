@@ -86,7 +86,7 @@ const SoalSingle: NextPage<SoalProps> = ({
                   </Text>
 
                   {fotoTambahan && (
-                    <Image src={`/${fotoTambahan}`} marginBottom={4} />
+                    <Image src={fotoTambahan} marginBottom={4} />
                   )}
 
                   <RadioGroup
@@ -106,10 +106,7 @@ const SoalSingle: NextPage<SoalProps> = ({
                           <Radio key={jawaban} value={`${trueKah}`}>
                             {jawaban}
                             {fotoTambahan && (
-                              <Image
-                                src={`/${fotoTambahan}`}
-                                marginBottom={4}
-                              />
+                              <Image src={fotoTambahan} marginBottom={4} />
                             )}
                           </Radio>
                         )
