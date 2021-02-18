@@ -19,5 +19,6 @@ export type Soal = {
 
 export type Jawaban = {
   jawaban: string
+  fotoTambahan?: string
   trueKah: boolean
 }

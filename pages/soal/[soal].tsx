@@ -79,14 +79,15 @@ const SoalSingle: NextPage<SoalProps> = ({
         >
           {(daftarSoal as Soal[]).map(
             ({ daftarJawaban, pertanyaan, fotoTambahan }, index) => {
-              console.log(fotoTambahan)
               return (
                 <Box key={pertanyaan}>
                   <Text fontSize='lg' marginBottom={4}>
                     {pertanyaan}
                   </Text>
 
-                  {fotoTambahan && <Image src={`/${fotoTambahan}`} marginBottom={4} />}
+                  {fotoTambahan && (
+                    <Image src={`/${fotoTambahan}`} marginBottom={4} />
+                  )}
 
                   <RadioGroup
                     onChange={v =>
@@ -100,11 +101,19 @@ const SoalSingle: NextPage<SoalProps> = ({
                     }
                   >
                     <VStack spacing={2} alignItems='start'>
-                      {daftarJawaban.map(({ jawaban, trueKah }) => (
-                        <Radio key={jawaban} value={`${trueKah}`}>
-                          {jawaban}
-                        </Radio>
-                      ))}
+                      {daftarJawaban.map(
+                        ({ jawaban, trueKah, fotoTambahan }) => (
+                          <Radio key={jawaban} value={`${trueKah}`}>
+                            {jawaban}
+                            {fotoTambahan && (
+                              <Image
+                                src={`/${fotoTambahan}`}
+                                marginBottom={4}
+                              />
+                            )}
+                          </Radio>
+                        )
+                      )}
                     </VStack>
                   </RadioGroup>
                 </Box>

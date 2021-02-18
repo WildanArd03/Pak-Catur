@@ -34,6 +34,10 @@ collections:
             max: 5
             fields:
               - { label: 'Jawaban', name: 'jawaban', widget: 'string' }
+              - label: 'Foto Tambahan'
+                widget: 'image'
+                name: 'fotoTambahan'
+                required: false
               - label: 'Jawaban Benar?'
                 name: 'trueKah'
                 widget: 'boolean'
