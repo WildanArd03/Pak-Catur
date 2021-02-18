@@ -5,25 +5,21 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
-  Box,
   Button,
   Container,
   Heading,
-  Image,
-  Radio,
-  RadioGroup,
-  Text,
   useDisclosure,
   VStack,
 } from '@chakra-ui/react'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import { FormEvent, useRef, useState } from 'react'
 import Navigation from '~root/components/Navigation'
+import SoalComponent from '~root/components/SoalComponent'
 import { practicesDir, practicesList } from '~root/lib/constants'
 import { getMarkdownData } from '~root/lib/functions'
 import { MarkdownData, Soal } from '~root/lib/types'
-import { useRouter } from 'next/router'
 
 type SoalParams = {
   soal: string
@@ -77,46 +73,19 @@ const SoalSingle: NextPage<SoalProps> = ({
           spacing={8}
           alignItems='start'
         >
-          {(daftarSoal as Soal[]).map(
-            ({ daftarJawaban, pertanyaan, fotoTambahan }, index) => {
-              return (
-                <Box key={pertanyaan}>
-                  <Text fontSize='lg' marginBottom={4}>
-                    {pertanyaan}
-                  </Text>
-
-                  {fotoTambahan && (
-                    <Image src={fotoTambahan} marginBottom={4} />
-                  )}
-
-                  <RadioGroup
-                    onChange={v =>
-                      setLembarJawaban(lembarJawaban =>
-                        setLembarJawabanNomor(
-                          index,
-                          v === 'true',
-                          lembarJawaban
-                        )
-                      )
-                    }
-                  >
-                    <VStack spacing={2} alignItems='start'>
-                      {daftarJawaban.map(
-                        ({ jawaban, trueKah, fotoTambahan }) => (
-                          <Radio key={jawaban} value={`${trueKah}`}>
-                            {jawaban}
-                            {fotoTambahan && (
-                              <Image src={fotoTambahan} marginBottom={4} />
-                            )}
-                          </Radio>
-                        )
-                      )}
-                    </VStack>
-                  </RadioGroup>
-                </Box>
-              )
-            }
-          )}
+          {(daftarSoal as Soal[]).map((soal, index) => {
+            return (
+              <SoalComponent
+                key={soal.pertanyaan}
+                soal={soal}
+                onRadioChange={v =>
+                  setLembarJawaban(lembarJawaban =>
+                    setLembarJawabanNomor(index, v === 'true', lembarJawaban)
+                  )
+                }
+              />
+            )
+          })}
 
           <Button type='submit' colorScheme='green'>
             Selesai
@@ -124,26 +93,24 @@ const SoalSingle: NextPage<SoalProps> = ({
         </VStack>
       </Container>
 
-      <Container maxWidth='90%'>
-        <AlertDialog
-          leastDestructiveRef={wtfIsThis}
-          isOpen={isOpen}
-          onClose={() => router.replace('/soal')}
-          isCentered
-        >
-          <AlertDialogOverlay />
+      <AlertDialog
+        leastDestructiveRef={wtfIsThis}
+        isOpen={isOpen}
+        onClose={() => router.replace('/soal')}
+        isCentered
+      >
+        <AlertDialogOverlay />
 
-          <AlertDialogContent>
-            <AlertDialogHeader>Hasil Latihan Soal</AlertDialogHeader>
-            <AlertDialogBody>
-              Selamat, nilai kamu{' '}
-              {lembarJawaban.reduce((acc, cur) => (cur ? acc + 1 : acc), 0)}
-            </AlertDialogBody>
+        <AlertDialogContent>
+          <AlertDialogHeader>Hasil Latihan Soal</AlertDialogHeader>
+          <AlertDialogBody>
+            Selamat, nilai kamu{' '}
+            {lembarJawaban.reduce((acc, cur) => (cur ? acc + 1 : acc), 0)}
+          </AlertDialogBody>
 
-            <AlertDialogFooter />
-          </AlertDialogContent>
-        </AlertDialog>
-      </Container>
+          <AlertDialogFooter />
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 }
