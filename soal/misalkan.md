@@ -1,18 +1,15 @@
 ---
-title: Misalkan
+title: Contoh Soal Operasi Matriks
 soal:
-  - pertanyaan: Soal nomor 1
-    daftarJawaban:
+  - daftarJawaban:
+      - trueKah: false
+        jawaban: A. 4
       - trueKah: true
-        jawaban: Ini jawaban bener
+        jawaban: B. 2
       - trueKah: false
-        jawaban: Salah
+        jawaban: C. 1
       - trueKah: false
-        jawaban: Salah
-  - pertanyaan: Soal nomor 2
-    daftarJawaban:
-      - trueKah: true
-        jawaban: Bener
-      - trueKah: false
-        jawaban: Salah
+        jawaban: D. -1
+    pertanyaan: Determinan AB adalah.. .. .
+    fotoTambahan: /img/oprasi-mat-s1.png
 ---

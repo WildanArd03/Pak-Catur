@@ -21,8 +21,8 @@ export default function SoalComponent({
 
       <RadioGroup onChange={onRadioChange}>
         <VStack spacing={2} alignItems='start'>
-          {daftarJawaban.map(({ jawaban, trueKah, fotoTambahan }) => (
-            <Radio key={jawaban} value={`${trueKah}`}>
+          {daftarJawaban.map(({ jawaban, trueKah, fotoTambahan }, index) => (
+            <Radio key={jawaban} value={`${trueKah}${index}`}>
               {jawaban}
               {fotoTambahan && <Image src={fotoTambahan} marginBottom={4} />}
             </Radio>

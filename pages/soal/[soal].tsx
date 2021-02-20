@@ -80,7 +80,11 @@ const SoalSingle: NextPage<SoalProps> = ({
                 soal={soal}
                 onRadioChange={v =>
                   setLembarJawaban(lembarJawaban =>
-                    setLembarJawabanNomor(index, v === 'true', lembarJawaban)
+                    setLembarJawabanNomor(
+                      index,
+                      v.toString().slice(0, -1) === 'true',
+                      lembarJawaban
+                    )
                   )
                 }
               />
