@@ -1,5 +1,5 @@
 ---
-title: Contoh Soal Operasi Matriks
+title: Latihan Soal Operasi Matriks
 soal:
   - daftarJawaban:
       - trueKah: false
@@ -10,6 +10,6 @@ soal:
         jawaban: C. 1
       - trueKah: false
         jawaban: D. -1
-    pertanyaan: Determinan AB adalah.. .. .
+    pertanyaan: "Determinan AB adalah.. .. . "
     fotoTambahan: /img/oprasi-mat-s1.png
 ---
