@@ -1,5 +1,5 @@
 ---
-title: Latihan Soal Oprasi Matriks
+title: Latihan Soal
 soal:
   - daftarJawaban:
       - trueKah: true
